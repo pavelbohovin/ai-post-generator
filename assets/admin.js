@@ -84,28 +84,29 @@
 			});
 		},
 
-		/**
-		 * Animate progress bar
-		 */
-		animateProgress: function(totalPosts) {
-			const $fill = $('#aipg-progress-fill');
-			const $text = $('#aipg-progress-text');
-			let progress = 0;
-			const increment = 100 / (totalPosts * 2); // Slower progression
-			
-			const interval = setInterval(function() {
-				progress += increment;
-				if (progress >= 95) {
-					progress = 95; // Stop at 95% until complete
-					clearInterval(interval);
-				}
-				$fill.css('width', progress + '%');
-				$text.text(Math.round(progress) + '%');
-			}, 500);
+	/**
+	 * Animate progress bar
+	 */
+	animateProgress: function(totalPosts) {
+		const $progress = $('#aipg-progress');
+		const $fill = $('#aipg-progress-fill');
+		const $text = $('#aipg-progress-text');
+		let progress = 0;
+		const increment = 100 / (totalPosts * 2); // Slower progression
+		
+		const interval = setInterval(function() {
+			progress += increment;
+			if (progress >= 95) {
+				progress = 95; // Stop at 95% until complete
+				clearInterval(interval);
+			}
+			$fill.css('width', progress + '%');
+			$text.text(Math.round(progress) + '%');
+		}, 500);
 
-			// Store interval ID to clear later
-			$progress.data('interval', interval);
-		},
+		// Store interval ID to clear later
+		$progress.data('interval', interval);
+	},
 
 		/**
 		 * Complete progress bar
