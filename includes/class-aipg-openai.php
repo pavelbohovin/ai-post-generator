@@ -60,8 +60,8 @@ class AIPG_OpenAI {
 	public function __construct() {
 		$this->api_key     = get_option( 'aipg_api_key', '' );
 		$this->model       = get_option( 'aipg_model', 'gpt-4o-mini' );
-		$this->max_tokens  = get_option( 'aipg_max_tokens', 2000 );
-		$this->temperature = get_option( 'aipg_temperature', 0.7 );
+		$this->max_tokens  = (int) get_option( 'aipg_max_tokens', 2000 );
+		$this->temperature = (float) get_option( 'aipg_temperature', 0.7 );
 	}
 
 	/**
